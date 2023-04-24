@@ -16,5 +16,5 @@ export interface PersistConfigurationSession {
  * @param config.storage Local storage to use, defaults to `localStorage`
  */
 export declare const recoilPersistSession: (config?: PersistConfigurationSession) => {
-    persistAtom: AtomEffect<any>;
+    persistAtomSession: AtomEffect<any>;
 };
