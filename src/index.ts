@@ -20,16 +20,16 @@ export interface PersistConfiguration {
  */
 export const recoilPersistSession = (
   config: PersistConfiguration = {},
-): { persistAtom: AtomEffect<any> } => {
+): { persistAtomSession: AtomEffect<any> } => {
   if (typeof window === 'undefined') {
     return {
-      persistAtom: () => {},
+      persistAtomSession: () => {},
     }
   }
 
   const { key = 'recoil-persist-session', storage = sessionStorage } = config
 
-  const persistAtom: AtomEffect<any> = ({ onSet, node, trigger, setSelf }) => {
+  const persistAtomSession: AtomEffect<any> = ({ onSet, node, trigger, setSelf }) => {
     if (trigger === 'get') {
       const state = getState()
       if (typeof state.then === 'function') {
@@ -108,5 +108,5 @@ export const recoilPersistSession = (
     }
   }
 
-  return { persistAtom }
+  return { persistAtomSession }
 }

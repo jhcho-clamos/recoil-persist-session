@@ -11,11 +11,11 @@ exports.recoilPersistSession = void 0;
 const recoilPersistSession = (config = {}) => {
     if (typeof window === 'undefined') {
         return {
-            persistAtom: () => { },
+            persistAtomSession: () => { },
         };
     }
     const { key = 'recoil-persist-session', storage = sessionStorage } = config;
-    const persistAtom = ({ onSet, node, trigger, setSelf }) => {
+    const persistAtomSession = ({ onSet, node, trigger, setSelf }) => {
         if (trigger === 'get') {
             const state = getState();
             if (typeof state.then === 'function') {
@@ -86,6 +86,6 @@ const recoilPersistSession = (config = {}) => {
             console.error(e);
         }
     };
-    return { persistAtom };
+    return { persistAtomSession };
 };
 exports.recoilPersistSession = recoilPersistSession;
